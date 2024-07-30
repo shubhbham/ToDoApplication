@@ -17,3 +17,7 @@ Kill the ports in use:
 ----------------------
 kill -9 $(lsof -t -i:4000)
 fuser -k 4000/tcp
+
+Run the docker file:
+--------------------
+docker run -p 4000:4000 todo_application

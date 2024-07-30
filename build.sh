@@ -6,6 +6,7 @@
 APP_NAME="todo_application"
 BUILD_DIR="./build"
 VERSION="1.0.0"
+DOCKER_IMAGE_NAME="todo_application:latest"
 
 # Function to build the Go application
 build() {
@@ -28,6 +29,13 @@ package_app() {
     echo "Packaging complete: $BUILD_DIR/$APP_NAME-$VERSION.tar.gz"
 }
 
+# Function to build the Docker image
+build_docker_image() {
+    echo "Building Docker image $DOCKER_IMAGE_NAME..."
+    docker build -t "$DOCKER_IMAGE_NAME" .
+    echo "Docker image build complete."
+}
+
 # Main script flow
 echo "Starting build process..."
 
@@ -42,5 +50,8 @@ build
 
 # Package the application (optional)
 package_app
+
+# Build Docker image
+build_docker_image
 
 echo "Build process completed."
